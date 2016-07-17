@@ -14,3 +14,10 @@
 	The port can be changed on (src/main/webapp/static/js/app.js) the 3rd line.
 
 4.All settings in application.properties
+
+5.Basic API
+	main page: GET-> host/index 
+	get all beers: GET-> host/all
+	get random beer: GET-> host/random
+	add new beer: POST-> host/beer
+	remove beers: POST-> host/remove
