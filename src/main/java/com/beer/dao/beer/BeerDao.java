@@ -32,8 +32,9 @@ public class BeerDao extends HibernateDao<Beer> implements IBeerDao {
 
     @Override
     public void deleteById(Long id) {
-	String stmt = "delete from Beer where id=:id";
-	getSession().createQuery(stmt).setParameter("id", id);
+	String stmt = "delete from Beer b where id=:id";
+	Query query = getSession().createQuery(stmt).setParameter("id", id);
+	query.executeUpdate();
     }
 
     @Override

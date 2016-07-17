@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.beer.domain.Beer;
 import com.beer.service.beer.IBeerService;
+import com.beer.service.dbinit.DbFiller;
 
 @Controller
 public class BeerController {
@@ -41,11 +42,29 @@ public class BeerController {
 
     @RequestMapping(path = "/beer", method = RequestMethod.POST)
     public ResponseEntity<Beer> saveNewBeer(@RequestBody Beer beer) {
+	
+	if(beer.getName()==null || "".equals(beer.getName()))
+	    beer.setName(DbFiller.getName());
+	
+	if(beer.getDescription()==null || "".equals(beer.getDescription()))
+	    beer.setDescription(DbFiller.getDescription());
+	
+	if(beer.getAlcoholPercentage()==null || "".equals(beer.getAlcoholPercentage()))
+	    beer.setAlcoholPercentage(DbFiller.getAlcoholPercentage());
+	
+	if(beer.getBreweryLocation()==null || "".equals(beer.getBreweryLocation()))
+	    beer.setBreweryLocation(DbFiller.getBreweryLocation());
+	
 	beerService.saveNew(beer);
 	return new ResponseEntity<Beer>(beer, HttpStatus.OK);
     }
 
-    public void removeBeer() {
+    @RequestMapping(path = "/remove", method = RequestMethod.POST)
+    public void removeBeer(@RequestBody List<Long> selection) {
+
+	for (Long id : selection) {
+	    beerService.deleteById(id);
+	}
 
     }
 
