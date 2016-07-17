@@ -1,1 +1,16 @@
+1.Environment and tools:
 
+	springboot
+	postgreSQL
+
+2.Database:
+	roleName=jervis
+	databaseName=jervis
+	password=jervis
+
+3.Host Port:
+	port=9393
+	host=http://localhost:9393/...
+	The port can be changed on (src/main/webapp/static/js/app.js) the 3rd line.
+
+4.All settings in application.properties

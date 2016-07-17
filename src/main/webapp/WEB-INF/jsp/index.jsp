@@ -96,7 +96,7 @@
 							ng-click="beerCtrl.remove(beerCtrl.selection)">Remove</button></td>
 				</tr>
 				<tr>
-					<th></th>
+					<th>#</th>
 					<th>Beer ID</th>
 					<th>Beer Name</th>
 					<th>Description</th>
